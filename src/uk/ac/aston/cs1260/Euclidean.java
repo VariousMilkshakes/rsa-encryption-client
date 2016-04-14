@@ -31,6 +31,12 @@ public class Euclidean {
     	return nums;
     }
     
-    public static int backwards ()
+    public static int backwards (ArrayList<NumberTrace> chunks) {
+    	
+    	NumberTrace target = chunks.get(0);
+    	
+    	
+    	return 0;
+    }
     
 }

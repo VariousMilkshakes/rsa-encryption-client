@@ -42,5 +42,9 @@ public class NumberTrace {
 	public int getTraceTotal () {
 		return this.traceTotal;
 	}
+	
+	public int getElementValue () {
+		
+	}
     	
 }
