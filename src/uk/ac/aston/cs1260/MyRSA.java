@@ -11,7 +11,7 @@ public class MyRSA {
         int m = (p - 1) * (q - 1);
         
         // Use Extended Euclidean Algo to get a
-        int a = Euclidean.extendedAlgorithm(m, privateKey);
+        int a = Euclidean.extendedAlgorithm(p, q);
         
         return "";
     }

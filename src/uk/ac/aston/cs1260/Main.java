@@ -8,6 +8,8 @@ public class Main {
     public static void main(String[] args) {
         int p = 53;
         int q = 61;
+        p = 568;
+        q = 208;
         int k = 1013;
         String message = "Hello world";
         System.out.println("Message to encrypt: " + message);

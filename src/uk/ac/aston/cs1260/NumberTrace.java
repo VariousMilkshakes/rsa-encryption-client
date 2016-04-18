@@ -1,50 +1,68 @@
 package uk.ac.aston.cs1260;
 
-import java.util.ArrayList;
-
 public class NumberTrace {
     	
-	private int value;
-	private int remainder;
-	private int traceTotal;
-	private ArrayList<Integer> trace;
+	private int value = 0;
+	private int remainder = 0;
+	private int elementCount = 0;
+	
+	private NumberTrace element = null;
+	private NumberTrace branch = null;
+	private NumberTrace child = null;
+	
+	private boolean floor = false;
 	
 	public NumberTrace (int val){
 		this.value = val;
-		this.trace = new ArrayList<Integer>();
 	}
 	
-	private void appendElements (int newElement){
-		this.trace.add(newElement);
+	public void setTrace (NumberTrace ele) {
+		this.element = ele;
 	}
 	
-	private void updateTotals (){
-		int total = this.value;
-		this.traceTotal = 0;
-		
-		for (int e : this.trace) {
-			total -= e;
-			this.traceTotal += e;
+	public void setChild (NumberTrace nt) {
+		if (this.child != null) {
+			this.child.setChild(nt);
+		} else {
+			this.child = nt;
 		}
-		
-		this.remainder = total;
 	}
 	
-	public void newElement (int e) {
-		appendElements(e);
-		updateTotals();
+	public void increase () {
+		this.elementCount++;
+		this.remainder = this.value - getTraceTotal();
+	}
+	
+	public void branch () {
+		this.branch = new NumberTrace(remainder);
 	}
 	
 	public int getRemainder () {
 		return this.remainder;
 	}
 	
-	public int getTraceTotal () {
-		return this.traceTotal;
+	public int getElements () {
+		return this.elementCount;
 	}
 	
-	public int getElementValue () {
-		
+	public int getTraceTotal () {
+		return this.element.getValue() * this.elementCount;
 	}
-    	
+	
+	public NumberTrace getElement () {
+		return this.element;
+	}
+	
+	public int getValue () {
+		return this.value;
+	}
+	
+	public boolean isFloor () {
+		return this.floor;
+	}
+	
+	public NumberTrace getChild () {
+		return this.child;
+	}
+	
 }
